@@ -2,6 +2,6 @@
 
 
 #Note :
- - Replace xorg-xbacklight with acpilight to enable screen brightness control
+ - For Radeon Driver user, replace xorg-xbacklight package with acpilight package to enable screen brightness control
  
  
