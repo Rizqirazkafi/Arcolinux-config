@@ -10,3 +10,10 @@ sudo pacman -S pcmanfm --noconfirm --needed
 sudo pacman -S vlc --noconfirm --needed
 sudo pacman -S deadbeef --noconfirm --needed
 sudo pacman -S virtualbox --noconfirm --needed
+sudo pacman -S fira-code --noconfirm --needed
+
+
+
+
+
+
