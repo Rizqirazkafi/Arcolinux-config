@@ -1,4 +1,4 @@
-#List of software
+# List of software
 1. vivaldi with ffmpeg codecs
 2. Visual Studio Code
 3. acpilight 
