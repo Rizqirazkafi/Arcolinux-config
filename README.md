@@ -1,7 +1,8 @@
 # Arcolinux-config
 
+This is my personal config of ArcolinuxB after fresh install
 
-#Note :
- - For Radeon Driver user, replace xorg-xbacklight package with acpilight package to enable screen brightness control
- 
+
+
+
  
