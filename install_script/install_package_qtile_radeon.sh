@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Things to install in arcolinuxB QTile edition
+update --noconfirm
 sudo pacman -S vivaldi --noconfirm --needed
 sudo pacman -S vivaldi-ffmpeg-codecs --noconfirm --needed
 sudo pacman -S code --noconfirm --needed
