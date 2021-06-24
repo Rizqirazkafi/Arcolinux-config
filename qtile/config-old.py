@@ -33,7 +33,7 @@ from libqtile.config import Drag, Key, Screen, Group, Drag, Click, Rule
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.widget import Spacer
-import arcobattery
+#import arcobattery
 
 #mod4 or mod = super key
 mod = "mod4"
@@ -67,13 +67,13 @@ keys = [
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "m", lazy.spawn('pragha')),
     Key([mod], "q", lazy.window.kill()),
-    Key([mod], "r", lazy.spawn('rofi -show run')),
+    Key([mod], "r", lazy.spawn('rofi-theme-selector')),
     Key([mod], "t", lazy.spawn('urxvt')),
     Key([mod], "v", lazy.spawn('pavucontrol')),
-    Key([mod], "w", lazy.spawn('firefox')),
-    Key([mod], "x", lazy.spawn('arcolinux-logout')),
+    Key([mod], "w", lazy.spawn('vivaldi-stable')),
+    Key([mod], "x", lazy.spawn('oblogout')),
     Key([mod], "Escape", lazy.spawn('xkill')),
-    Key([mod], "Return", lazy.spawn('alacritty')),
+    Key([mod], "Return", lazy.spawn('termite')),
     Key([mod], "KP_Enter", lazy.spawn('termite')),
     Key([mod], "F1", lazy.spawn('vivaldi-stable')),
     Key([mod], "F2", lazy.spawn('atom')),
@@ -82,15 +82,15 @@ keys = [
     Key([mod], "F5", lazy.spawn('meld')),
     Key([mod], "F6", lazy.spawn('vlc --video-on-top')),
     Key([mod], "F7", lazy.spawn('virtualbox')),
-    Key([mod], "F8", lazy.spawn('pcmanfm')),
+    Key([mod], "F8", lazy.spawn('thunar')),
     Key([mod], "F9", lazy.spawn('evolution')),
     Key([mod], "F10", lazy.spawn("spotify")),
     Key([mod], "F11", lazy.spawn('rofi -show run -fullscreen')),
-    Key([mod], "F12", lazy.spawn('rofi-theme-selector')),
+    Key([mod], "F12", lazy.spawn('rofi -show run')),
 
 # SUPER + SHIFT KEYS
 
-    Key([mod, "shift"], "Return", lazy.spawn('pcmanfm')),
+    Key([mod, "shift"], "Return", lazy.spawn('thunar')),
     Key([mod, "shift"], "d", lazy.spawn("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")),
     Key([mod, "shift"], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
@@ -103,13 +103,12 @@ keys = [
     Key(["mod1", "control"], "Prior", lazy.spawn('conky-rotate -p')),
     Key(["mod1", "control"], "a", lazy.spawn('xfce4-appfinder')),
     Key(["mod1", "control"], "b", lazy.spawn('thunar')),
-    Key(["mod1", "control"], "c", lazy.spawn('code')),
+    Key(["mod1", "control"], "c", lazy.spawn('catfish')),
     Key(["mod1", "control"], "e", lazy.spawn('arcolinux-tweak-tool')),
     Key(["mod1", "control"], "f", lazy.spawn('firefox')),
     Key(["mod1", "control"], "g", lazy.spawn('chromium -no-default-browser-check')),
     Key(["mod1", "control"], "i", lazy.spawn('nitrogen')),
-    Key(["mod1", "control"], "k", lazy.spawn('arcolinux-logout')),
-    Key(["mod1", "control"], "l", lazy.spawn('arcolinux-logout')),
+    Key(["mod1", "control"], "k", lazy.spawn('slimlock')),
     Key(["mod1", "control"], "m", lazy.spawn('xfce4-settings-manager')),
     Key(["mod1", "control"], "o", lazy.spawn(home + '/.config/qtile/scripts/picom-toggle.sh')),
     Key(["mod1", "control"], "p", lazy.spawn('pamac-manager')),
@@ -123,6 +122,7 @@ keys = [
 
 # ALT + ... KEYS
 
+    Key(["mod1"], "k", lazy.spawn('slimlock')),
     Key(["mod1"], "f", lazy.spawn('variety -f')),
     Key(["mod1"], "h", lazy.spawn('urxvt -e htop')),
     Key(["mod1"], "n", lazy.spawn('variety -n')),
@@ -299,18 +299,18 @@ for i in groups:
 
 
 def init_layout_theme():
-    return {"margin":2,
+    return {"margin":5,
             "border_width":2,
             "border_focus": "#5e81ac",
             "border_normal": "#4c566a"
-           }
+            }
 
 layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=3, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.MonadWide(margin=3, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+    layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+    layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
     layout.Matrix(**layout_theme),
     layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
@@ -334,6 +334,8 @@ def init_colors():
 
 
 colors = init_colors()
+
+
 
 
 # WIDGETS FOR THE BAR
@@ -387,20 +389,20 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[1],
                         ),
-               widget.Net(
-                        font="Noto Sans",
-                        fontsize=12,
-                        interface="wlp1s0",
-                        foreground=colors[2],
-                        background=colors[1],
-                        padding = 0,
-                        ),
-               widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
+               # widget.Net(
+               #          font="Noto Sans",
+               #          fontsize=12,
+               #          interface="enp0s31f6",
+               #          foreground=colors[2],
+               #          background=colors[1],
+               #          padding = 0,
+               #          ),
+               # widget.Sep(
+               #          linewidth = 1,
+               #          padding = 10,
+               #          foreground = colors[2],
+               #          background = colors[1]
+               #          ),
                # widget.NetGraph(
                #          font="Noto Sans",
                #          fontsize=12,
@@ -422,43 +424,43 @@ def init_widgets_list():
                #          background = colors[1]
                #          ),
                # # do not activate in Virtualbox - will break qtile
-               widget.ThermalSensor(
-                        foreground = colors[5],
-                        foreground_alert = colors[6],
-                        background = colors[1],
-                        metric = True,
-                        padding = 3,
-                        threshold = 80
-                        ),
+               # widget.ThermalSensor(
+               #          foreground = colors[5],
+               #          foreground_alert = colors[6],
+               #          background = colors[1],
+               #          metric = True,
+               #          padding = 3,
+               #          threshold = 80
+               #          ),
                # # battery option 1  ArcoLinux Horizontal icons do not forget to import arcobattery at the top
-               widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
-               arcobattery.BatteryIcon(
-                        padding=0,
-                        scale=0.7,
-                        y_poss=2,
-                        theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
-                        update_interval = 5,
-                        background = colors[1]
-                        ),
+               # widget.Sep(
+               #          linewidth = 1,
+               #          padding = 10,
+               #          foreground = colors[2],
+               #          background = colors[1]
+               #          ),
+               # arcobattery.BatteryIcon(
+               #          padding=0,
+               #          scale=0.7,
+               #          y_poss=2,
+               #          theme_path=home + "/.config/qtile/icons/battery_icons_horiz",
+               #          update_interval = 5,
+               #          background = colors[1]
+               #          ),
                # # battery option 2  from Qtile
-               widget.Sep(
-                        linewidth = 1,
-                        padding = 10,
-                        foreground = colors[2],
-                        background = colors[1]
-                        ),
-               widget.Battery(
-                        font="Noto Sans",
-                        update_interval = 10,
-                        fontsize = 12,
-                        foreground = colors[5],
-                        background = colors[1],
-	                    ),
+               # widget.Sep(
+               #          linewidth = 1,
+               #          padding = 10,
+               #          foreground = colors[2],
+               #          background = colors[1]
+               #          ),
+               # widget.Battery(
+               #          font="Noto Sans",
+               #          update_interval = 10,
+               #          fontsize = 12,
+               #          foreground = colors[5],
+               #          background = colors[1],
+	           #          ),
                widget.TextBox(
                         font="FontAwesome",
                         text="  ",
@@ -646,7 +648,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'Arandr'},
     {'wmclass': 'feh'},
     {'wmclass': 'Galculator'},
-    {'wmclass': 'arcolinux-logout'},
+    {'wmclass': 'Oblogout'},
     {'wmclass': 'xfce4-terminal'},
     {'wname': 'branchdialog'},
     {'wname': 'Open File'},
