@@ -221,5 +221,5 @@ ex ()
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
 #neofetch
-./fm6000 -c bright_cyan -n
+#./fm6000 -c bright_cyan -n
 
